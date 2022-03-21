@@ -1,6 +1,11 @@
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+credentials = pika.PlainCredentials('guest', 'guest')
+connection = pika.BlockingConnection(pika.ConnectionParameters(
+   host='localhost', 
+   # virtual_host='vhost_test',
+   credentials=credentials   
+))
 channel = connection.channel()
 
 # create queue

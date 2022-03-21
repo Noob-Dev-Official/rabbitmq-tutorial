@@ -6,5 +6,7 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
-    environment:
-      RABBITMQ_DEFAULT_VHOST: vhost_test
+    # environment:
+    #   RABBITMQ_DEFAULT_VHOST: vhost_test
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
