@@ -1,9 +1,9 @@
 import pika
 
-credentials = pika.PlainCredentials('guest', 'guest')
+credentials = pika.PlainCredentials('test', 'test')
 connection = pika.BlockingConnection(pika.ConnectionParameters(
    host='localhost', 
-   # virtual_host='vhost_test',
+   virtual_host='vhost',
    credentials=credentials   
 ))
 channel = connection.channel()

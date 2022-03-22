@@ -1,10 +1,10 @@
 import pika, sys, os
 
 def main():
-   credentials = pika.PlainCredentials('guest', 'guest')
+   credentials = pika.PlainCredentials('test', 'test')
    connection = pika.BlockingConnection(pika.ConnectionParameters(
       host='localhost', 
-      # virtual_host='vhost_test',
+      virtual_host='vhost',
       credentials=credentials
    ))
    channel = connection.channel()
@@ -26,13 +26,13 @@ def main():
 
 
 if __name__ == '__main__':
-      try:
-         main()
-      except KeyboardInterrupt:
-         print('Interrupted')
+   try:
+      main()
+   except KeyboardInterrupt:
+      print('Interrupted')
 
-         try:
-            sys.exit(0)
-         except SystemExit:
-            os._exit(0)
+      try:
+         sys.exit(0)
+      except SystemExit:
+         os._exit(0)
 
