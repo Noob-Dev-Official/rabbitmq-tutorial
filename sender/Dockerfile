@@ -1,7 +1,14 @@
-FROM python:3.8
+FROM python:3.9
+
+RUN apt-get -y update
+
+WORKDIR /app
 
 COPY requirements.txt .
+
 RUN pip install -r requirements.txt
+
 COPY . .
 
-CMD python3 sender.py
+CMD ["python3", "-u", "/app/sender.py"]
+

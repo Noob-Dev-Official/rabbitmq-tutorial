@@ -1,4 +1,4 @@
-import pika, os
+import pika, os, requests
 
 RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', default='localhost')
 RABBITMQ_PORT = os.getenv('RABBITMQ_PORT', default=5672)
@@ -8,7 +8,8 @@ RABBITMQ_PASS = os.getenv('RABBITMQ_PASS', default='test')
 credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS)
 connection = pika.BlockingConnection(pika.ConnectionParameters(
    host=RABBITMQ_HOST, 
-   credentials=credentials   
+   credentials=credentials,
+   port=RABBITMQ_PORT 
 ))
 channel = connection.channel()
 
@@ -26,3 +27,10 @@ print("'Hello World!' sent")
 
 # close connection
 connection.close()
+
+# print(requests.get(
+#          'http://rabbitmq:15672/api/users', headers={
+#          'Content-Type': 'application/json',
+#          'Accept': 'application/json'
+#       }, 
+#          auth=('test', 'test')).json())

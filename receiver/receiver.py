@@ -1,4 +1,4 @@
-import pika, sys, os
+import pika, sys, os, time
 
 RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', default='localhost')
 RABBITMQ_PORT = os.getenv('RABBITMQ_PORT', default=5672)
@@ -29,10 +29,11 @@ def main():
    )
 
    print(' [*] Waiting for messages. To exit press CTRL+C')
-   # channel.start_consuming()
+   channel.start_consuming()
 
 
 if __name__ == '__main__':
+   time.sleep(5)
    main()
    # try:
    # except KeyboardInterrupt:
