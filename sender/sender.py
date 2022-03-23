@@ -1,9 +1,13 @@
-import pika
+import pika, os
 
-credentials = pika.PlainCredentials('test', 'test')
+RABBITMQ_HOST = os.getenv('RABBITMQ_HOST', default='localhost')
+RABBITMQ_PORT = os.getenv('RABBITMQ_PORT', default=5672)
+RABBITMQ_USER = os.getenv('RABBITMQ_USER', default='test')
+RABBITMQ_PASS = os.getenv('RABBITMQ_PASS', default='test')
+
+credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS)
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-   host='localhost', 
-   virtual_host='vhost',
+   host=RABBITMQ_HOST, 
    credentials=credentials   
 ))
 channel = connection.channel()
