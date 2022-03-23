@@ -27,10 +27,3 @@ print("'Hello World!' sent")
 
 # close connection
 connection.close()
-
-# print(requests.get(
-#          'http://rabbitmq:15672/api/users', headers={
-#          'Content-Type': 'application/json',
-#          'Accept': 'application/json'
-#       }, 
-#          auth=('test', 'test')).json())
